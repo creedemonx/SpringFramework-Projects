@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="${title}"></title>
+</head>
+<body>
+    <h1 th:text="${title}"></h1>
+
+    <ul>
+        <li th:text="${user.name}"></li>
+        <li th:text="${user.lastName}"></li>
+
+        <!-- Mostrar email solo si no es null -->
+        <li th:if="${user.email != null}" th:text="${user.email}"></li>
+
+        <!-- Mostrar mensaje si el email es null o vacío -->
+        <li th:if="${user.email == null or user.email == ''}" th:text="'No tiene email'"></li>
+    </ul>
+    <a th:href="@{/list}">listado de clientes</a>
+    <a th:href="@{'/poo/params/foo?message=' + ${title}}">Ver mensaje</a>
+</body>
+</html>
